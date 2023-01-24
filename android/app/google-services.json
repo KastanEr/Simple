@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "976339682869",
+    "project_id": "simple-a1a5d",
+    "storage_bucket": "simple-a1a5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976339682869:android:5e52bc9a18a09a7fbe537c",
+        "android_client_info": {
+          "package_name": "com.example.simple"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976339682869-60lp7fv2mpepdfb557e6j8a2f3nhgpqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDenarSB_iXbgsneHBlSJ5a4m5k2mU0jdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976339682869-60lp7fv2mpepdfb557e6j8a2f3nhgpqc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976339682869-jp6kkkpojg7f9rqhs6eggoc0ae61oitc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.simple"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
