@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:simple/screens/register_screen_input_email.dart';
+import 'package:simple/service/firebase_authentication_service.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
-  onPressedLoginButton() {
-    print("로그인");
-  }
-
-  onTapRegister() {
-    print("회원가입");
-  }
-
-  onTapForgotPassword() {
-    print("비밀번호 찾기");
-  }
+  LoginScreen({super.key});
+  final TextEditingController _inputEmailController = TextEditingController();
+  final TextEditingController _inputPasswordController =
+      TextEditingController();
+  String _inputEmail = "";
+  String _inputPassword = "";
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +52,9 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
               child: Column(
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextFormField(
+                    controller: _inputEmailController,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Email"),
                     ),
@@ -66,8 +62,10 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextFormField(
+                    controller: _inputPasswordController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text(
                         "Password",
@@ -78,11 +76,16 @@ class LoginScreen extends StatelessWidget {
                     height: 10,
                   ),
                   ElevatedButton(
-                    onPressed: onPressedLoginButton,
+                    onPressed: () {
+                      _inputEmail = _inputEmailController.text;
+                      _inputPassword = _inputPasswordController.text;
+                      FirebaseAuthenticationService.signIn(
+                          _inputEmail, _inputPassword);
+                    },
                     style: ElevatedButton.styleFrom(
                         minimumSize: const Size(1000, 60)),
                     child: const Text(
-                      "Login",
+                      "로그인",
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -99,7 +102,16 @@ class LoginScreen extends StatelessWidget {
                         width: 5,
                       ),
                       GestureDetector(
-                        onTap: onTapRegister,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const RegisterScreenInputEmail(),
+                              fullscreenDialog: true,
+                            ),
+                          );
+                        },
                         child: const Text(
                           "회원가입",
                           style: TextStyle(
@@ -120,7 +132,7 @@ class LoginScreen extends StatelessWidget {
                         width: 5,
                       ),
                       GestureDetector(
-                        onTap: onTapForgotPassword,
+                        onTap: () {},
                         child: const Text(
                           "비밀번호 찾기",
                           style: TextStyle(
