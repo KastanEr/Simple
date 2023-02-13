@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:simple/screens/menu_screen.dart';
 import 'package:simple/service/firebase_firestore_service.dart';
 import 'package:simple/service/user_service.dart';
 
@@ -18,14 +19,7 @@ class HomeScreen extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>);
           return Scaffold(
             appBar: AppBar(
-              leading: IconButton(
-                icon: const Icon(
-                  Icons.menu,
-                  semanticLabel: 'menu',
-                ),
-                onPressed: () async {},
-              ),
-              title: Text(UserService.user!.name),
+              title: const Text("Simple"),
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(
@@ -38,6 +32,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
+            drawer: const MenuScreen(),
           );
         }
         return const Center(
