@@ -18,6 +18,8 @@ class RegisterScreenVerificationEmail extends StatefulWidget {
 
 class _RegisterScreenVerificationEmailState
     extends State<RegisterScreenVerificationEmail> {
+  bool emailIsNotVerificated = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,16 +47,43 @@ class _RegisterScreenVerificationEmailState
                 widget.userEmail,
                 style: const TextStyle(fontSize: 30),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                "인증메일이 전송되었습니다.\n회원가입을 위해 이메일 인증을 완료해주세요.",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
+              emailIsNotVerificated
+                  ? Column(
+                      children: const [
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          "인증메일이 전송되었습니다.\n회원가입을 위해 이메일 인증을 완료해주세요.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: const [
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Icon(
+                          Icons.error,
+                          color: Colors.redAccent,
+                          size: 50,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "이메일 인증이 완료되지 않았습니다.\n다시 시도해주세요.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
               const SizedBox(
                 height: 20,
               ),
@@ -88,6 +117,9 @@ class _RegisterScreenVerificationEmailState
                               ModalRoute.withName("/"),
                             );
                           }
+                        } else {
+                          emailIsNotVerificated = false;
+                          setState(() {});
                         }
                       },
                       style: ElevatedButton.styleFrom(
