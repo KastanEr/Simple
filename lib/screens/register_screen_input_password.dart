@@ -9,16 +9,13 @@ class RegisterScreenInputPassword extends StatefulWidget {
   });
 
   @override
-  State<RegisterScreenInputPassword> createState() =>
-      _RegisterScreenInputPasswordState();
+  State<RegisterScreenInputPassword> createState() => _RegisterScreenInputPasswordState();
 }
 
-class _RegisterScreenInputPasswordState
-    extends State<RegisterScreenInputPassword> {
+class _RegisterScreenInputPasswordState extends State<RegisterScreenInputPassword> {
   bool checkPassword = false;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _inputPasswordContorller =
-      TextEditingController();
+  final TextEditingController _inputPasswordContorller = TextEditingController();
   String _inputPassword = "";
   String _confirmPassword = "";
 
@@ -59,18 +56,13 @@ class _RegisterScreenInputPasswordState
                           return null;
                         }
                       : (String? value) {
-                          return !RegExp(
-                                      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')
-                                  .hasMatch(value!)
-                              ? "최소 한개의 영문 대문자, 소문자, 숫자를 입력하세요"
-                              : null;
+                          return !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$').hasMatch(value!) ? "최소 한개의 영문 대문자, 소문자, 숫자를 입력하세요" : null;
                         },
                   style: const TextStyle(
                     fontSize: 20,
                   ),
                   decoration: InputDecoration(
-                    hintText:
-                        checkPassword ? "비밀번호를 다시 입력해주세요" : "비밀번호를 입력해주세요",
+                    hintText: checkPassword ? "비밀번호를 다시 입력해주세요" : "비밀번호를 입력해주세요",
                     hintStyle: const TextStyle(
                       fontSize: 20,
                     ),
@@ -92,9 +84,7 @@ class _RegisterScreenInputPasswordState
                             : () {
                                 Navigator.pop(context);
                               },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(0, 50),
-                            backgroundColor: Colors.blueGrey),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50), backgroundColor: Colors.blueGrey),
                         child: const Text(
                           "이전",
                           style: TextStyle(
@@ -111,14 +101,12 @@ class _RegisterScreenInputPasswordState
                         onPressed: checkPassword
                             ? () {
                                 if (_formKey.currentState!.validate()) {
-                                  _confirmPassword =
-                                      _inputPasswordContorller.text;
+                                  _confirmPassword = _inputPasswordContorller.text;
                                   _inputPasswordContorller.clear();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          RegisterScreenInputUsername(
+                                      builder: (context) => RegisterScreenInputUsername(
                                         userEmail: widget.userEmail,
                                         userPassword: _confirmPassword,
                                       ),
@@ -132,16 +120,14 @@ class _RegisterScreenInputPasswordState
                               }
                             : () {
                                 if (_formKey.currentState!.validate()) {
-                                  _inputPassword =
-                                      _inputPasswordContorller.text;
+                                  _inputPassword = _inputPasswordContorller.text;
                                   _inputPasswordContorller.clear();
                                   setState(() {
                                     checkPassword = true;
                                   });
                                 }
                               },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(0, 50)),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50)),
                         child: const Text(
                           "다음",
                           style: TextStyle(

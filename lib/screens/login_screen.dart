@@ -5,8 +5,7 @@ import 'package:simple/service/firebase_authentication_service.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final TextEditingController _inputEmailController = TextEditingController();
-  final TextEditingController _inputPasswordController =
-      TextEditingController();
+  final TextEditingController _inputPasswordController = TextEditingController();
   String _inputEmail = "";
   String _inputPassword = "";
 
@@ -79,11 +78,9 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       _inputEmail = _inputEmailController.text;
                       _inputPassword = _inputPasswordController.text;
-                      FirebaseAuthenticationService.signIn(
-                          _inputEmail, _inputPassword);
+                      FirebaseAuthenticationService.signIn(_inputEmail, _inputPassword);
                     },
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(1000, 60)),
+                    style: ElevatedButton.styleFrom(minimumSize: const Size(1000, 60)),
                     child: const Text(
                       "로그인",
                       style: TextStyle(
@@ -106,8 +103,7 @@ class LoginScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const RegisterScreenInputEmail(),
+                              builder: (context) => const RegisterScreenInputEmail(),
                               fullscreenDialog: true,
                             ),
                           );

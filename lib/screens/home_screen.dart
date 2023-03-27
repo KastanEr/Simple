@@ -11,12 +11,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream:
-          FirebaseFirestoreService.db.collection("Users").doc(uid).snapshots(),
+      stream: FirebaseFirestoreService.db.collection("Users").doc(uid).snapshots(),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasData) {
-          UserService.initUserData(
-              snapshot.data!.data() as Map<String, dynamic>);
+          UserService.initUserData(snapshot.data!.data() as Map<String, dynamic>);
           return Scaffold(
             backgroundColor: const Color(0xFAFAFAFA),
             appBar: AppBar(
@@ -38,8 +36,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
@@ -54,10 +51,7 @@ class HomeScreen extends StatelessWidget {
                           height: 15,
                         ),
                         LinearProgressIndicator(
-                          value: UserService.user!.numberOfTodo != 0
-                              ? UserService.user!.numberOfDone /
-                                  UserService.user!.numberOfTodo
-                              : 0,
+                          value: UserService.user!.numberOfTodo != 0 ? UserService.user!.numberOfDone / UserService.user!.numberOfTodo : 0,
                           minHeight: 15,
                         ),
                       ],
@@ -67,8 +61,7 @@ class HomeScreen extends StatelessWidget {
                     height: 15,
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
@@ -106,8 +99,7 @@ class HomeScreen extends StatelessWidget {
                     height: 15,
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
@@ -145,8 +137,7 @@ class HomeScreen extends StatelessWidget {
                     height: 15,
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),

@@ -12,12 +12,10 @@ class RegisterScreenVerificationEmail extends StatefulWidget {
   });
 
   @override
-  State<RegisterScreenVerificationEmail> createState() =>
-      _RegisterScreenVerificationEmailState();
+  State<RegisterScreenVerificationEmail> createState() => _RegisterScreenVerificationEmailState();
 }
 
-class _RegisterScreenVerificationEmailState
-    extends State<RegisterScreenVerificationEmail> {
+class _RegisterScreenVerificationEmailState extends State<RegisterScreenVerificationEmail> {
   bool emailIsNotVerificated = true;
 
   @override
@@ -89,8 +87,7 @@ class _RegisterScreenVerificationEmailState
               ),
               GestureDetector(
                 onTap: () {
-                  FirebaseAuthenticationService.sendVerificationEmail(
-                      FirebaseAuth.instance.currentUser);
+                  FirebaseAuthenticationService.sendVerificationEmail(FirebaseAuth.instance.currentUser);
                 },
                 child: const Text(
                   "인증메일 재전송",
@@ -106,10 +103,8 @@ class _RegisterScreenVerificationEmailState
                     child: ElevatedButton(
                       onPressed: () async {
                         await FirebaseAuthenticationService.signOut();
-                        await FirebaseAuthenticationService.signIn(
-                            widget.userEmail, widget.userPassword);
-                        if (FirebaseAuthenticationService
-                            .checkEmailVerification()) {
+                        await FirebaseAuthenticationService.signIn(widget.userEmail, widget.userPassword);
+                        if (FirebaseAuthenticationService.checkEmailVerification()) {
                           await FirebaseAuthenticationService.signOut();
                           if (mounted) {
                             Navigator.popUntil(
@@ -122,8 +117,7 @@ class _RegisterScreenVerificationEmailState
                           setState(() {});
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(0, 50)),
+                      style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50)),
                       child: const Text(
                         "다음",
                         style: TextStyle(

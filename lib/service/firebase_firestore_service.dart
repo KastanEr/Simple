@@ -21,8 +21,7 @@ class FirebaseFirestoreService {
   }
 
   static String getProjectNameToPid(String pid) {
-    final data =
-        db.collection("Projects").doc(pid).get() as Map<String, dynamic>;
+    final data = db.collection("Projects").doc(pid).get() as Map<String, dynamic>;
     return data["name"];
   }
 }

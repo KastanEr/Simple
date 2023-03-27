@@ -11,15 +11,12 @@ class RegisterScreenInputUsername extends StatefulWidget {
   });
 
   @override
-  State<RegisterScreenInputUsername> createState() =>
-      _RegisterScreenInputUsernameState();
+  State<RegisterScreenInputUsername> createState() => _RegisterScreenInputUsernameState();
 }
 
-class _RegisterScreenInputUsernameState
-    extends State<RegisterScreenInputUsername> {
+class _RegisterScreenInputUsernameState extends State<RegisterScreenInputUsername> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _inputUserNameController =
-      TextEditingController();
+  final TextEditingController _inputUserNameController = TextEditingController();
   String _inputUserName = "";
   bool userNameAvailable = false;
 
@@ -78,9 +75,7 @@ class _RegisterScreenInputUsernameState
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(0, 50),
-                            backgroundColor: Colors.blueGrey),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50), backgroundColor: Colors.blueGrey),
                         child: const Text(
                           "이전",
                           style: TextStyle(
@@ -96,12 +91,9 @@ class _RegisterScreenInputUsernameState
                       child: ElevatedButton(
                         onPressed: () async {
                           _inputUserName = _inputUserNameController.text;
-                          userNameAvailable =
-                              await FirebaseAuthenticationService
-                                  .checkUserNameAvailable(_inputUserName);
+                          userNameAvailable = await FirebaseAuthenticationService.checkUserNameAvailable(_inputUserName);
                           if (_formKey.currentState!.validate()) {
-                            await FirebaseAuthenticationService
-                                .creatUserAccount(
+                            await FirebaseAuthenticationService.creatUserAccount(
                               widget.userEmail,
                               widget.userPassword,
                               _inputUserName,
@@ -111,8 +103,7 @@ class _RegisterScreenInputUsernameState
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      RegisterScreenVerificationEmail(
+                                  builder: (context) => RegisterScreenVerificationEmail(
                                     userEmail: widget.userEmail,
                                     userPassword: widget.userPassword,
                                     userName: _inputUserName,
@@ -123,8 +114,7 @@ class _RegisterScreenInputUsernameState
                             }
                           }
                         },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(0, 50)),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50)),
                         child: const Text(
                           "다음",
                           style: TextStyle(

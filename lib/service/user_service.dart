@@ -9,11 +9,7 @@ class UserService {
   static initUserData(Map<String, dynamic> json) {
     user = UserModel.fromJson(json);
     for (var projectId in user!.projectIdList) {
-      FirebaseFirestoreService.db
-          .collection("Projects")
-          .doc(projectId)
-          .snapshots()
-          .listen((event) {
+      FirebaseFirestoreService.db.collection("Projects").doc(projectId).snapshots().listen((event) {
         projectList.add(ProjectModel.fromJson(event.data()!));
       });
     }

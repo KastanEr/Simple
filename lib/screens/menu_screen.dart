@@ -58,9 +58,7 @@ class _MenuScreenState extends State<MenuScreen> {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: UserService.user!.profileImageUrl == ""
-              ? const Icon(Icons.account_circle, size: 35)
-              : Image.network(UserService.user!.profileImageUrl),
+          child: UserService.user!.profileImageUrl == "" ? const Icon(Icons.account_circle, size: 35) : Image.network(UserService.user!.profileImageUrl),
         ),
         title: Text(
           UserService.user!.name,

@@ -23,8 +23,7 @@ class CreateProjectScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),

@@ -5,8 +5,7 @@ import 'package:simple/service/firebase_firestore_service.dart';
 
 class FirebaseAuthenticationService {
   static creatUserAccount(String email, String password, String name) async {
-    final credential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -34,8 +33,7 @@ class FirebaseAuthenticationService {
 
   static signIn(String email, String password) async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -79,9 +77,7 @@ class FirebaseAuthenticationService {
 
   static Future<bool> checkEmailAvailable(String email) async {
     List<String> emailList = [];
-    final docRef = FirebaseFirestoreService.db
-        .collection("RegistedUserData")
-        .doc("RegistedEmail");
+    final docRef = FirebaseFirestoreService.db.collection("RegistedUserData").doc("RegistedEmail");
     await docRef.get().then((DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
       emailList = List.from(data["EmailList"]);
@@ -95,9 +91,7 @@ class FirebaseAuthenticationService {
 
   static Future<bool> checkUserNameAvailable(String userName) async {
     List<String> userNameList = [];
-    final docRef = FirebaseFirestoreService.db
-        .collection("RegistedUserData")
-        .doc("RegistedUserName");
+    final docRef = FirebaseFirestoreService.db.collection("RegistedUserData").doc("RegistedUserName");
     await docRef.get().then((DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
       userNameList = List.from(data["UserNameList"]);

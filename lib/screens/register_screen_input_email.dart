@@ -6,16 +6,14 @@ class RegisterScreenInputEmail extends StatefulWidget {
   const RegisterScreenInputEmail({super.key});
 
   @override
-  State<RegisterScreenInputEmail> createState() =>
-      _RegisterScreenInputEmailState();
+  State<RegisterScreenInputEmail> createState() => _RegisterScreenInputEmailState();
 }
 
 class _RegisterScreenInputEmailState extends State<RegisterScreenInputEmail> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _inputEmailController = TextEditingController();
   String _inputEmail = "";
-  String emailRegExp =
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+.[a-zA-Z]+";
+  String emailRegExp = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+.[a-zA-Z]+";
   bool emailAvailable = false;
 
   @override
@@ -88,9 +86,7 @@ class _RegisterScreenInputEmailState extends State<RegisterScreenInputEmail> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(0, 50),
-                            backgroundColor: Colors.blueGrey),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50), backgroundColor: Colors.blueGrey),
                         child: const Text(
                           "이전",
                           style: TextStyle(
@@ -106,16 +102,14 @@ class _RegisterScreenInputEmailState extends State<RegisterScreenInputEmail> {
                       child: ElevatedButton(
                         onPressed: () async {
                           _inputEmail = _inputEmailController.text;
-                          emailAvailable = await FirebaseAuthenticationService
-                              .checkEmailAvailable(_inputEmail);
+                          emailAvailable = await FirebaseAuthenticationService.checkEmailAvailable(_inputEmail);
                           if (_formKey.currentState!.validate()) {
                             _inputEmailController.clear();
                             if (mounted) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      RegisterScreenInputPassword(
+                                  builder: (context) => RegisterScreenInputPassword(
                                     userEmail: _inputEmail,
                                   ),
                                   fullscreenDialog: true,
@@ -124,8 +118,7 @@ class _RegisterScreenInputEmailState extends State<RegisterScreenInputEmail> {
                             }
                           }
                         },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(0, 50)),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size(0, 50)),
                         child: const Text(
                           "다음",
                           style: TextStyle(
